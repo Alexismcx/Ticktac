@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const journeyModel = require('../models/journey');
+const userModel = require('../models/users');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('login');
 });
 
-/* GET home page. */
+/* GET Login */
 router.get('/login', function(req, res, next) {
   res.render('login', {  });
 });
