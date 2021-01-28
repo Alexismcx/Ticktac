@@ -85,6 +85,7 @@ router.get('/basket', async function(req, res, next){
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
+
 router.get('/history', async function(req, res, next){
 
   console.log(req.session.user.name);
@@ -101,8 +102,6 @@ router.get('/history', async function(req, res, next){
 
   res.render('history', {history: user.orders})
 });
-
-
 
 
 module.exports = router;
