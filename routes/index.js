@@ -3,6 +3,10 @@ var router = express.Router();
 
 const mongoose = require('mongoose');
 
+
+console.log("alexis")
+
+
 // useNewUrlParser ;)
 var options = {
   connectTimeoutMS: 5000,
