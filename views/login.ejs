@@ -1,22 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/45af463291.js" crossorigin="anonymous"></script>
     <title>Ticketac - Login</title>
 </head>
 
 <body>
-    
-    <h1>Hackathon</h1>
+
+    <!-- NAVIGUATION -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-train"></i>
+                    Ticketac</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav navbar-right">
+                    <li><a class="nav-link" href="#">Connection</a></li>
+                    <li><a class="nav-link" href="#">My last trips</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- SIGN IN AREA -->
+        <div class="col-12 col-sm-6 mr-5 text-center">
+
+            <div class="formArea">
+                <h4 class="titleForm mb-4">Sign In :</h4>
+                <form action="/sign-in" method="POST">
+                    <div class="form-group input-group-lg mb-3">
+                        <input name="email" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group input-group-lg mb-3">
+                        <input name="password" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </form>
+            </div>
+
+        </div>
 
 
-<!-- Scripts-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
+        <!-- SIGN UP AREA -->
+        <div class="col-12 col-sm-6 text-center">
+
+            <div class="formArea">
+                <h4 class="titleForm mb-4">Sign Up :</h4>
+                <form action="/sign-up" method="POST">
+                    <div class="form-group input-group-lg mb-3">
+                        <input name="username" type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group input-group-lg mb-3">
+                        <input name="username" type="text" class="form-control" placeholder="FirstName">
+                    </div>
+                    <div class="form-group input-group-lg mb-3">
+                        <input name="email" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group input-group-lg mb-3">
+                        <input name="password" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>

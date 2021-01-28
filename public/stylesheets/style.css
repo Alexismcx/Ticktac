@@ -1,8 +1,30 @@
 body {
+  display: flex;
+  height: 100vh;
+  /* Taille de la page = Taille de la fenêtre */
+  background: linear-gradient(to top, #1e5799 0%, #7db9e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Open Sans;
 }
 
-a {
-  color: #00B7FF;
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+  font-weight: bold;
+}
+
+nav {
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-collapse {
+  flex-direction: row-reverse;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
