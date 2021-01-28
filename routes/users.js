@@ -7,6 +7,12 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+/* GET Logout */
+router.get('/logout', function(req, res, next) {
+  
+  req.session.user = null;
+  res.redirect('/');
+});
 
 /* POST Sign-up */
 router.post('/sign-up', async (req, res) => {
@@ -24,7 +30,7 @@ router.post('/sign-up', async (req, res) => {
     console.log("User connecté : " + req.session.user.firstName + ' ' + req.session.user.name);
     res.redirect('/homepage');
   } else {
-    res.render('login');
+    res.redirect('/login');
   }
 });
 
@@ -36,9 +42,9 @@ router.post('/sign-in', async(req, res) => {
   if(searchUser != null) {
     req.session.user = searchUser;
     console.log("User connecté : " + req.session.user.firstName + ' ' + req.session.user.name);
-    res.render('homepage');
+    res.redirect('/homepage');
   } else {
-    res.render('login')
+    res.redirect('/login');
   };
 });
 
