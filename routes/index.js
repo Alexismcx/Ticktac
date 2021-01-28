@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const journeyModel = require('../models/journey');
+const userModel = require('../models/users');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('login');
 });
 
-/* GET home page. */
+/* GET Login */
 router.get('/login', function(req, res, next) {
   res.render('login', {  });
 });
@@ -84,9 +85,12 @@ router.get('/basket', async function(req, res, next){
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> b8b1529c5779f0b9df44277d837e0547fd69169d
 
 module.exports = router;
