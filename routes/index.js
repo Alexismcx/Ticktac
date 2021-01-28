@@ -1,15 +1,15 @@
 var express = require('express');
-const userModel = require('../../WeatherApp/PART5/models/users');
 var router = express.Router();
 const journeyModel = require('../models/journey');
+const userModel = require('../models/users');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('login');
 });
 
-/* GET home page. */
+/* GET Login */
 router.get('/login', function(req, res, next) {
   res.render('login', {  });
 });
@@ -80,20 +80,26 @@ router.get('/basket', async function(req, res, next){
     })
   }
 
+  console.log(req.session.dataJourney);
+
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
-route.get('/history', async function(req, res, next){
+router.get('/history', async function(req, res, next){
 
-  var users = await userModel.find(
+  console.log(req.session.user.name);
+
+  var user = await userModel.find(
     {name: req.session.user.name}
   )
 
   for (let i = 0; i < req.session.dataJourney.length; i++) {
-    users.orders.push(req.session.dataJourney[i]);
+    user.orders.push(req.session.dataJourney[i]);
   }
 
-  res.render('history', {history: users.orders})
+  console.log(user);
+
+  res.render('history', {history: user.orders})
 });
 
 
