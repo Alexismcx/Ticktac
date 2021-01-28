@@ -1,4 +1,5 @@
 var express = require('express');
+const userModel = require('../../WeatherApp/PART5/models/users');
 var router = express.Router();
 const journeyModel = require('../models/journey');
 
@@ -53,8 +54,6 @@ router.post('/result', async function(req, res, next){
     
   }
 
-  console.log(itineraire);
-  
 });
 
 router.get('/basket', async function(req, res, next){
@@ -73,8 +72,8 @@ router.get('/basket', async function(req, res, next){
 
   if (testExist == false) {
     req.session.dataJourney.push({
-        cityDeparture: req.query.cityDeparture,
-        cityArrival: req.query.cityArrival,
+        departure: req.query.cityDeparture,
+        arrival: req.query.cityArrival,
         date: req.query.dateJourney,
         departureTime: req.query.departureTime,
         price: req.query.price
@@ -86,9 +85,15 @@ res.render('basket', {dataJourney: req.session.dataJourney})
 
 route.get('/history', async function(req, res, next){
 
-  
+  var users = await userModel.find(
+    {name: req.session.user.name}
+  )
 
-res.render('history')
+  for (let i = 0; i < req.session.dataJourney.length; i++) {
+    users.orders.push(req.session.dataJourney[i]);
+  }
+
+  res.render('history', {history: users.orders})
 });
 
 
