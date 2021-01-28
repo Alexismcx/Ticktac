@@ -7,7 +7,6 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-module.exports = router;
 
 /* POST Sign-up */
 router.post('/sign-up', async (req, res) => {
@@ -17,11 +16,12 @@ router.post('/sign-up', async (req, res) => {
   if(searchUser == null) {
     let newUser = new userModel ({
       email: req.body.email,
-      username: req.body.username,
+      name: req.body.name,
+      firstName: req.body.firstName,
       password: req.body.password
     });
     req.session.user = await newUser.save();
-    console.log(req.session.user.email);
+    console.log("User connecté : " + req.session.user.firstName + ' ' + req.session.user.name);
     res.redirect('/homepage');
   } else {
     res.render('login');
@@ -35,11 +35,11 @@ router.post('/sign-in', async(req, res) => {
   
   if(searchUser != null) {
     req.session.user = searchUser;
-    console.log(req.session.user.username);
-    res.redirect('/weather');
+    console.log("User connecté : " + req.session.user.firstName + ' ' + req.session.user.name);
+    res.render('homepage');
   } else {
-    res.render('login', {})
+    res.render('login')
   };
-
-  res.redirect('homepage')
 });
+
+module.exports = router;

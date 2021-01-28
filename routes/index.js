@@ -85,14 +85,5 @@ router.get('/basket', async function(req, res, next){
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
-route.get('/history', async function(req, res, next){
-
-  
-
-res.render('history')
-});
-
-
-
 
 module.exports = router;
