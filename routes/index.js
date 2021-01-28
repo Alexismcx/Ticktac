@@ -1,5 +1,4 @@
 var express = require('express');
-const { route } = require('../../BikeShop/PART5/routes');
 var router = express.Router();
 const journeyModel = require('../models/journey');
 
@@ -53,6 +52,8 @@ router.post('/result', async function(req, res, next){
     res.render('result', {itineraire: itineraire});
     
   }
+
+  console.log(itineraire);
   
 });
 
