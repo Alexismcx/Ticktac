@@ -13,19 +13,6 @@ router.get('/login', function(req, res, next) {
   res.render('login', {  });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Cette route est juste une verification du Save.
 // Vous pouvez choisir de la garder ou la supprimer.
 router.get('/database', function(req, res, next) {
@@ -45,6 +32,66 @@ router.get('/database', function(req, res, next) {
   }
   res.render('index', { title: 'Express' });
 });
+
+router.get('/homepage', function(req, res, next) {
+  res.render('homepage');
+});
+
+router.post('/result', async function(req, res, next){
+
+  var date = new Date(req.body.date)
+  
+  var itineraire = await journeyModel.find(
+      {departure: req.body.departure, arrival: req.body.arrival, date: date}
+  )
+
+  if(itineraire.length == 0){
+   res.redirect('/error')
+  }else{
+    console.log(itineraire);
+    res.render('result', {itineraire: itineraire});
+    
+  }
+
+  console.log(itineraire);
+  
+});
+
+router.get('/basket', async function(req, res, next){
+
+  var testExist = false
+
+  if (req.session.dataJourney == undefined) {
+    req.session.dataJourney = [];
+  };
+
+  for (let i = 0; i < req.session.dataJourney.length; i++) {
+    if (req.session.dataJourney[i].cityDeparture == req.query.cityDeparture) {
+        testExist = true
+    }
+  }
+
+  if (testExist == false) {
+    req.session.dataJourney.push({
+        cityDeparture: req.query.cityDeparture,
+        cityArrival: req.query.cityArrival,
+        date: req.query.dateJourney,
+        departureTime: req.query.departureTime,
+        price: req.query.price
+    })
+  }
+
+res.render('basket', {dataJourney: req.session.dataJourney})
+});
+
+route.get('/history', async function(req, res, next){
+
+  
+
+res.render('history')
+});
+
+
 
 
 module.exports = router;
