@@ -1,5 +1,4 @@
 body {
-<<<<<<< HEAD
   display: flex;
   height: 100vh;
   /* Taille de la page = Taille de la fenêtre */
@@ -8,10 +7,12 @@ body {
   padding: 50px;
   font-family: Open Sans;
 }
+
 img{
   width: 30px;
   height: auto;
 }
+
 .navbar-light .navbar-nav .nav-link {
   color: black;
   font-weight: bold;
@@ -20,21 +21,6 @@ img{
 nav {
   color: black;
   font-weight: bold;
-=======
-  background: #87e0fd;
-  background: -moz-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
-  background: -webkit-linear-gradient(
-    top,
-    #87e0fd 0%,
-    #53cbf1 40%,
-    #05abe0 100%
-  );
-  background: linear-gradient(to bottom, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 );
-
-  background-position: center;
-  background-size: cover;
->>>>>>> b8b1529c5779f0b9df44277d837e0547fd69169d
 }
 
 .navbar-collapse {

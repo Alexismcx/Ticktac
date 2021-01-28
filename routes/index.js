@@ -85,12 +85,9 @@ router.get('/basket', async function(req, res, next){
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> b8b1529c5779f0b9df44277d837e0547fd69169d
 
 module.exports = router;
