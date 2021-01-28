@@ -7,7 +7,10 @@ body {
   padding: 50px;
   font-family: Open Sans;
 }
-
+img{
+  width: 30px;
+  height: auto;
+}
 .navbar-light .navbar-nav .nav-link {
   color: black;
   font-weight: bold;
