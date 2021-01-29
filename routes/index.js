@@ -62,10 +62,6 @@ router.post('/result', async function(req, res, next){
 });
 
 router.get('/basket', async function(req, res, next){
-
-  console.log(req.session.user.name);
-  console.log(req.session.dataJourney);
-
   var testExist = false
 
   if (req.session.dataJourney == undefined) {
@@ -84,13 +80,10 @@ router.get('/basket', async function(req, res, next){
         price: req.query.price
     })
   }
-  console.log(req.session.dataJourney);
-
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
 router.get('/add-order', async function(req, res, next){
-
   var lastOrders = await userModel.find(
     {name: req.session.user.name}
   )
@@ -103,7 +96,6 @@ router.get('/add-order', async function(req, res, next){
     {name: req.session.user.name},
     {orders: lastOrders[0].orders}
   )
-  console.log(savedUser);
 res.redirect('homepage')
 });
 

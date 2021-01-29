@@ -10,6 +10,46 @@
     <title>Ticketac - My Last Trips</title>
 </head>
 <body>
+<!-- NAVIGATION -->
+<%- include('navbar'); %>
+
+    <div class="container-fluid">
+        <div class="d-flex flex-column">
+
+            <div class="col-12 col-sm-6 mr-5 text-center">
+
+                <div class="formArea mt-5 mb-3 ms-5" style="width:300px;">
+                    <h4 class="titleForm text-white">My last trips :</h4>
+                </div>
+            </div>
+            <table class="table table-light table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">N°</th>
+                        <th scope="col">Journey</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Departure Time</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Paris / Lille</td>
+                        <td>02/08/2019</td>
+                        <td>15:00</td>
+                        <td>125 €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/homepage"><button type="submit" class="btn btn-danger float-end">Home</button></a>
+    </div>
     
+
+    <!-- Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+        </script>
 </body>
 </html>
