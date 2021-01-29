@@ -35,7 +35,7 @@
                 <span class="p">train departure at <%= itineraire[i].departureTime %></span>
             </div>
             <div class="col-1">
-                <h6><strong><%= itineraire[i].price %>$</strong></h6>
+                <h6><strong><%= itineraire[i].price %>€</strong></h6>
             </div>
             <div class="col-2">
                 <a href="/basket?cityDeparture=<%= itineraire[i].departure %>&cityArrival=<%= itineraire[i].arrival %>&departureTime=<%= itineraire[i].departureTime %>&dateJourney=<%= itineraire[i].date %>&price=<%= itineraire[i].price %>"><button type="submit" class="btn btn-danger">OK</button></a>

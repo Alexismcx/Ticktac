@@ -39,7 +39,7 @@
                     <%
                     let totalCmd = 0;
                     for(let i = 0; i < dataJourney.length; i++) {
-                    totalCmd = parseInt(dataJourney[i].price) + totalCmd;
+                    totalCmd += parseInt(dataJourney[i].price);
                     %>
                     <tr>
                         <th scope="row"><%= i + 1 %></th>
@@ -86,7 +86,9 @@
                         </thead>
                         <tbody>
                             <%
+                            let totalCmd2 = 0;
                             for(let i = 0; i < dataJourney.length; i++) {
+                            totalCmd2 += parseInt(dataJourney[i].price);
                             %>
                             <tr>
                                 <th scope="row"><%= i + 1 %></th>
@@ -104,7 +106,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>230 €</td>
+                                <td><%= totalCmd2 %> €</td>
                             </tr>
                         </tfoot>
                     </table>

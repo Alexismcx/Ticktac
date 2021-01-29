@@ -41,7 +41,6 @@ router.post('/sign-in', async(req, res) => {
   
   if(searchUser != null) {
     req.session.user = searchUser;
-    console.log("User connecté : " + req.session.user.firstName + ' ' + req.session.user.name);
     res.redirect('/homepage');
   } else {
     res.redirect('/login');

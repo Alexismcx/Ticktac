@@ -4,7 +4,6 @@ const journeyModel = require('../models/journey');
 const userModel = require('../models/users');
 
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.redirect('login');
 });
@@ -15,35 +14,20 @@ router.get('/login', function(req, res, next) {
   res.render('login', {  });
 });
 
-// Cette route est juste une verification du Save.
-// Vous pouvez choisir de la garder ou la supprimer.
-router.get('/database', function(req, res, next) {
-
-  var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"];
-  var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"];
-
-  // Permet de savoir combien de trajets il y a par ville en base
-  for(i=0; i<city.length; i++){
-
-    journeyModel.find( 
-      { departure: city[i] } , //filtre
-      function (err, journey) {
-          console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
-      }
-    )
-  }
-  res.render('index', { title: 'Express' });
-});
 
 router.get('/homepage', function(req, res, next) {
+  if (req.session.user == undefined) {
+    res.redirect('/login')
+  };
   req.session.dataJourney = [];
-  res.render('homepage');
+  res.render('homepage', {user: req.session.user});
 });
 
 router.post('/result', async function(req, res, next){
 
-  console.log(req.session.user.name);
-  console.log(req.session.dataJourney);
+  if (req.session.user == undefined) {
+    res.redirect('/login')
+  };
 
   var date = new Date(req.body.date)
   dateFr = date.toLocaleDateString('fr-FR', {month: "numeric", day: "numeric"});
@@ -55,19 +39,23 @@ router.post('/result', async function(req, res, next){
   if(itineraire.length == 0){
    res.redirect('/error')
   }else{
-    res.render('result', {itineraire: itineraire, dateFr: dateFr});
+    res.render('result', {user: req.session.user, itineraire: itineraire, dateFr: dateFr});
   }
 
 });
 
 router.get('/basket', function(req, res, next){
 
+  if (req.session.user == undefined) {
+    res.redirect('/login')
+  };
+
   if (req.session.dataJourney == undefined) {
     req.session.dataJourney = [];
   };
 
   var date = new Date(req.query.dateJourney)
-  dateFr = date.toLocaleDateString();
+  dateFr = date.toLocaleDateString('fr-FR', {year: "numeric", month: "numeric", day: "numeric"});
 
   req.session.dataJourney.push({
       departure: req.query.cityDeparture,
@@ -77,12 +65,14 @@ router.get('/basket', function(req, res, next){
       price: req.query.price
   })
 
-res.render('basket', {dataJourney: req.session.dataJourney})
+res.render('basket', {user: req.session.user, dataJourney: req.session.dataJourney})
 });
 
 router.get('/add-order', async function(req, res, next){
-  console.log(req.session.dataJourney);
-  
+  if (req.session.user == undefined) {
+    res.redirect('/login')
+  };
+
   var lastOrders = await userModel.find(
     {name: req.session.user.name}
   )
@@ -96,20 +86,21 @@ router.get('/add-order', async function(req, res, next){
     {orders: lastOrders[0].orders}
   )
 
-res.redirect('homepage')
+res.redirect('homepage', {user: req.session.user})
 });
 
 
 router.get('/history', async function(req, res, next){
 
+  if (req.session.user == undefined) {
+    res.redirect('/login')
+  };
+
   var allTrips = await userModel.find(
     {name: req.session.user.name}
   )
 
-  console.log(allTrips);
-
-
-  res.render('history', {allTrips: allTrips})
+  res.render('history', {user: req.session.user, allTrips: allTrips})
 });
 
 
