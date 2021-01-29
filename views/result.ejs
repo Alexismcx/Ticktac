@@ -14,32 +14,34 @@
     <title>Ticketac - Results</title>
 </head>
 
-<body>
+<body class="d-flex justify-content-center">
 
     <!-- NAVIGUATION -->
     <%- include('navbar'); %>
 
-    <div class="container">
-        <div>
-            <h4>Tickets available on 02/08:</h4>
+    <div class="container3 d-flex flex-column align-items-center">
+        <div class="mt-5 mb-3 me-0">
+            <h4 class="maurine text-white">Tickets available on <%= dateFr %>:</h4>
         </div>
 
-
-  <div class="row ticket bg-light">
+        <%
+        for( let i = 0; i < itineraire.length; i++) {
+        %>
+        <div class="row ticket bg-light w-100 mb-3">
             <div class="col-4">
-                <h6><strong>Paris / Lille</strong></h6>
+                <h6><strong><%= itineraire[i].departure %> / <%= itineraire[i].arrival %></strong></h6>
             </div>
             <div class="col-5 info">
-                <span class="p">train departure at 15:00 pm</span>
+                <span class="p">train departure at <%= itineraire[i].departureTime %></span>
             </div>
             <div class="col-1">
-                <h6><strong>93$</strong></h6>
+                <h6><strong><%= itineraire[i].price %>$</strong></h6>
             </div>
             <div class="col-2">
-                <button type="submit" class="btn btn-danger">OK</button>
+                <a href="/basket?cityDeparture=<%= itineraire[i].departure %>&cityArrival=<%= itineraire[i].arrival %>&departureTime=<%= itineraire[i].departureTime %>&dateJourney=<%= itineraire[i].date %>&price=<%= itineraire[i].price %>"><button type="submit" class="btn btn-danger">OK</button></a>
             </div>
         </div>
-
+        <% } %>
     </div>
 
 

@@ -23,7 +23,7 @@
                 </div>
             </div>
             <%
-            if(dataJourney.length < 0) {
+            if(dataJourney.length > 0) {
             %>
             <table class="table table-light table-borderless">
                 <thead>
@@ -39,17 +39,16 @@
                     <%
                     let totalCmd = 0;
                     for(let i = 0; i < dataJourney.length; i++) {
+                    totalCmd = parseInt(dataJourney[i].price) + totalCmd;
                     %>
                     <tr>
                         <th scope="row"><%= i + 1 %></th>
-                        <td><%= dataJourney[i].cityDeparture %> / <%= dataJourney[i].cityArrival %></td>
+                        <td><%= dataJourney[i].departure %> / <%= dataJourney[i].arrival %></td>
                         <td><%= dataJourney[i].date %></td>
                         <td><%= dataJourney[i].departureTime %></td>
                         <td><%= dataJourney[i].price %> €</td>
                     </tr>
-                    <% 
-                    totalCmd += dataJourney[i].price;
-                    } %>
+                    <% } %>
                 </tbody>
                 <tfoot>
                     <tr class="table-danger">
@@ -71,7 +70,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -91,7 +90,8 @@
                             %>
                             <tr>
                                 <th scope="row"><%= i + 1 %></th>
-                                <td><%= dataJourney[i].cityDeparture %> / <%= dataJourney[i].cityArrival %></td>
+                                <td> <%= dataJourney[i].departure %> / <%= dataJourney[i].arrival %>
+                                </td>
                                 <td><%= dataJourney[i].date %></td>
                                 <td><%= dataJourney[i].departureTime %></td>
                                 <td><%= dataJourney[i].price %> €</td>
@@ -110,7 +110,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <a href="/add-order"><button data-bs-dismiss="modal" type="submit" class="btn btn-danger float-end">Confirm order</button></a>
+                    <a href="/add-order"><button type="submit" class="btn btn-danger float-end">Confirm order</button></a>
                 </div>
             </div>
         </div>

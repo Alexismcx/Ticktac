@@ -31,10 +31,10 @@
                 <h4 class="titleForm mb-4">Sign In :</h4>
                 <form action="/users/sign-in" method="POST">
                     <div class="form-group input-group-lg mb-3">
-                        <input name="email" type="email" class="form-control" placeholder="Email">
+                        <input name="email" required type="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group input-group-lg mb-3">
-                        <input name="password" type="password" class="form-control" placeholder="Password">
+                        <input name="password" required type="password" class="form-control" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-danger">Confirm</button>
                 </form>
@@ -50,16 +50,16 @@
                 <h4 class="titleForm mb-4">Sign Up :</h4>
                 <form action="/users/sign-up" method="POST">
                     <div class="form-group input-group-lg mb-3">
-                        <input name="name" type="text" class="form-control" placeholder="Name">
+                        <input name="name" required type="text" class="form-control" placeholder="Name">
                     </div>
                     <div class="form-group input-group-lg mb-3">
-                        <input name="firstName" type="text" class="form-control" placeholder="FirstName">
+                        <input name="firstName" required type="text" class="form-control" placeholder="FirstName">
                     </div>
                     <div class="form-group input-group-lg mb-3">
-                        <input name="email" type="email" class="form-control" placeholder="Email">
+                        <input name="email" required type="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group input-group-lg mb-3">
-                        <input name="password" type="password" class="form-control" placeholder="Password">
+                        <input name="password" required type="password" class="form-control" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-danger">Confirm</button>
                 </form>

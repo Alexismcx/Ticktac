@@ -34,7 +34,7 @@ nav {
   align-items: center;
   color: white;
 }
- 
+
 /* HOME PAGE */
 .container2 {
   margin: auto;
@@ -53,13 +53,14 @@ nav {
 
 .container3 {
   color: black;
+  width: 60%;
 }
-.info{
+.info {
   display: flex;
-  align-self:center;
+  align-self: center;
 }
-.p{
-  font-size: 10px;
+.p {
+  font-size: 15px;
 }
 .ticket {
   display: flex;
@@ -67,4 +68,8 @@ nav {
   align-items: center;
   border-radius: 3px;
   height: 80px;
+}
+
+.maurine {
+  margin-left: -100px;
 }

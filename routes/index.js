@@ -46,13 +46,11 @@ router.post('/result', async function(req, res, next){
   console.log(req.session.dataJourney);
 
   var date = new Date(req.body.date)
-  dateFr = date.toLocaleDateString();
+  dateFr = date.toLocaleDateString('fr-FR', {month: "numeric", day: "numeric"});
 
   var itineraire = await journeyModel.find(
       {departure: req.body.departure, arrival: req.body.arrival, date: date}
   )
-
-  dateFr = date.toLocaleDateString();
 
   if(itineraire.length == 0){
    res.redirect('/error')
@@ -62,8 +60,7 @@ router.post('/result', async function(req, res, next){
 
 });
 
-router.get('/basket', async function(req, res, next){
-  var testExist = false
+router.get('/basket', function(req, res, next){
 
   if (req.session.dataJourney == undefined) {
     req.session.dataJourney = [];
@@ -71,20 +68,21 @@ router.get('/basket', async function(req, res, next){
 
   var date = new Date(req.query.dateJourney)
   dateFr = date.toLocaleDateString();
-  
-  if (testExist == false) {
-    req.session.dataJourney.push({
-        departure: req.query.cityDeparture,
-        arrival: req.query.cityArrival,
-        date: dateFr,
-        departureTime: req.query.departureTime,
-        price: req.query.price
-    })
-  }
+
+  req.session.dataJourney.push({
+      departure: req.query.cityDeparture,
+      arrival: req.query.cityArrival,
+      date: dateFr,
+      departureTime: req.query.departureTime,
+      price: req.query.price
+  })
+
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
 router.get('/add-order', async function(req, res, next){
+  console.log(req.session.dataJourney);
+  
   var lastOrders = await userModel.find(
     {name: req.session.user.name}
   )
@@ -97,6 +95,7 @@ router.get('/add-order', async function(req, res, next){
     {name: req.session.user.name},
     {orders: lastOrders[0].orders}
   )
+
 res.redirect('homepage')
 });
 
@@ -107,7 +106,9 @@ router.get('/history', async function(req, res, next){
     {name: req.session.user.name}
   )
 
-  console.log(allTrips[0].orders[0]);
+  console.log(allTrips);
+
+
   res.render('history', {allTrips: allTrips})
 });
 

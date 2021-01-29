@@ -26,11 +26,11 @@
 
         <h4 class="titleForm mb-4">One-way ticket :</h4>
 
-        <form class="" action="">
+        <form action="/result" method="POST" >
           <div class="form-group input-group-lg mb-3 d-flex flex-row ">
-            <input class="form-control me-3" type="text" placeholder="From: Paris, Marseille..." required>
-            <input class="form-control me-3" type="text" placeholder="To: Lille, Nantes..." required>
-            <input class="form-control datepicker me-3" type="date" id="date-picker" value="2021-01-29" required>
+            <input name="departure" value="" class="form-control me-3" type="text" placeholder="From: Paris, Marseille..." required>
+            <input name="arrival" value="" class="form-control me-3" type="text" placeholder="To: Lille, Nantes..." required>
+            <input name="date" value="" class="form-control datepicker me-3" type="date" id="date-picker" value="2021-01-29" required>
             <button type="submit" class="btn btn-danger">Go</button>
           </div>
         </form>
