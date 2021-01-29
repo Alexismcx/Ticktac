@@ -86,20 +86,8 @@ res.render('basket', {dataJourney: req.session.dataJourney})
 });
 
 /* GET History */
-router.get('/history'), function(req, res, next) {
-
-
-  console.log(err);
-  // function error (err) {
-  //   if (err) {
-  //     console.log(`error, failed to connect to the database because --> ${err}`);
-  //   } else {
-  //     console.info('Everything OK');
-  //   }
-  //  }
-  //  error();
-
-  res.render('history', {});
-};
+router.get('/history', function(req, res, next) {
+  res.render('history');
+});
 
 module.exports = router;
