@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
 
 /* GET Logout */
 router.get('/logout', function(req, res, next) {
-  
   req.session.user = null;
+  req.session.dataJourney = [];
   res.redirect('/');
 });
 
