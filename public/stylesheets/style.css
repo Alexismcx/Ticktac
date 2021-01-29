@@ -7,18 +7,30 @@ body {
   padding: 50px;
   font-family: Open Sans;
 }
-img{
+img {
   width: 30px;
   height: auto;
 }
+
 .navbar-light .navbar-nav .nav-link {
   color: black;
   font-weight: bold;
 }
 
 nav {
-  background-position: center;
-  background-size: cover;
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-collapse {
+  flex-direction: row-reverse;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 .navbar-collapse {
