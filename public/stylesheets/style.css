@@ -50,7 +50,21 @@ nav {
 }
 
 /* RESULT PAGE */
+
 .container3 {
-  margin: auto;
   color: black;
+}
+.info{
+  display: flex;
+  align-self:center;
+}
+.p{
+  font-size: 10px;
+}
+.ticket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  height: 80px;
 }
