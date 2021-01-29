@@ -7,9 +7,11 @@ body {
   padding: 50px;
   font-family: Open Sans;
 }
+
 img {
   width: 30px;
   height: auto;
+  margin: 0;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -31,4 +33,24 @@ nav {
   justify-content: center;
   align-items: center;
   color: white;
+}
+ 
+/* HOME PAGE */
+.container2 {
+  margin: auto;
+  color: white;
+}
+
+#fond {
+  width: 300px;
+  height: 300px;
+  background-image: url("/images/landmark.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* RESULT PAGE */
+.container3 {
+  margin: auto;
+  color: black;
 }

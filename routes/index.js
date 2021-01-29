@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
   res.redirect('login');
 });
 
+
 /* GET Login */
 router.get('/login', function(req, res, next) {
   res.render('login', {  });
@@ -84,5 +85,6 @@ router.get('/basket', async function(req, res, next){
 
 res.render('basket', {dataJourney: req.session.dataJourney})
 });
+
 
 module.exports = router;
