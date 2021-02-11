@@ -86,7 +86,7 @@ router.get('/add-order', async function(req, res, next){
     {orders: lastOrders[0].orders}
   )
 
-res.redirect('homepage', {user: req.session.user})
+res.redirect('/homepage')
 });
 
 
